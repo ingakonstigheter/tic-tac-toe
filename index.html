@@ -6,29 +6,44 @@
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <script src="js/index.js" defer></script>
-        <title>Document</title>
+        <title>Tic Tac Toe</title>
     </head>
     <body>
-        <article class="container">
-            <h1>Tic Tac Toe</h1>
-            <button id="new-session">New Session</button>
-            <form class="new-players" action="">
-                <label for="p1Name"><input type="text" class="new-players--input" id="p1Name" name="p1Name"/></label>
-                <label for="p2Name"><input type="text" class="new-players--input" id="p2Name" name="p2Name"/></label>
-                <button type="submit">Save</button>
-            </form>
-            <div class="game">
-                <div class="square" id="one"><p></p></div>
-                <div class="square" id="two"><p></p></div>
-                <div class="square" id="three"><p></p></div>
-                <div class="square" id="four"><p></p></div>
-                <div class="square" id="five"><p></p></div>
-                <div class="square" id="six"><p></p></div>
-                <div class="square" id="seven"><p></p></div>
-                <div class="square" id="eight"><p></p></div>
-                <div class="square" id="nine"><p></p></div>
-            </div>
-            <button class="start"></button>
-        </article>
+        <main>
+            <header>
+                <h1><a href="index.html">Tic Tac Toe</a></h1>
+            </header>
+            <article class="container">
+                <button class="new-game">New Game</button>
+                <form class="new-players hidden">
+                    <label for="p1Name"
+                        >Player X <input type="text" class="new-players__input" id="p1Name"
+                    /></label>
+                    <label for="p2Name"
+                        >Player O <input type="text" class="new-players__input" id="p2Name"
+                    /></label>
+                    <button type="button" class="new-players__save">Save</button>
+                </form>
+
+                <div class="game hidden">
+                    <div class="game__score">
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <button type="button" class="game__restart">Restart</button>
+                    <div class="board">
+                        <button class="cell" data-index="0"></button>
+                        <button class="cell" data-index="1"></button>
+                        <button class="cell" data-index="2"></button>
+                        <button class="cell" data-index="3"></button>
+                        <button class="cell" data-index="4"></button>
+                        <button class="cell" data-index="5"></button>
+                        <button class="cell" data-index="6"></button>
+                        <button class="cell" data-index="7"></button>
+                        <button class="cell" data-index="8"></button>
+                    </div>
+                </div>
+            </article>
+        </main>
     </body>
 </html>

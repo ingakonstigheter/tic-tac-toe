@@ -1,20 +1,112 @@
+:root {
+    --bg-primary: #21295c;
+    --bg-secondary: #1b3b6f;
+    --bg-game-primary: #065a82;
+    --bg-game-secondary: #1c7293;
+    --bg-button: #c9fbff;
+    --clr-text: #ead2ac;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--clr-text);
+}
+
+main {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+a {
+	text-decoration: none;
+	color: var(--clr-text);
+}
+
+a:hover,
+a:focus {
+	outline: none;
+}
+
+p {
+	font-weight: bolder;
+}
+
+button {
+	width: fit-content;
+    color: var(--clr-text);
+    background-color: var(--bg-game-secondary);
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+}
+
+button:hover,
+button:focus {
+	outline: 1px solid var(--clr-text);
+	background-color: var(--clr-text);
+	color: var(--bg-primary);
+	transition: all 0.2s ease-in-out ;
+	cursor: pointer;
+
+}
+input {
+    background-color: var(--bg-button);
+	margin-left: 1em;
+}
+
+form {
+    background-color: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
 .game {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 5px;
+    display: flex;
+	flex-direction: column;
+    gap: 1rem;
     justify-content: center;
+    padding: 2rem;
+	border-radius: 10px;
+    background-color: var(--bg-game-primary);
     margin: auto;
+    .game__score {
+        display: flex;
+        justify-content: space-around;
+    }
+	button {
+		align-self: center;
+	}
 }
 
-.square {
-  width: 100px;
-  height: 100px;
-  font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eee;
-  cursor: pointer;
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem;
+
+}
+.cell {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	font-size: 2rem;
+	justify-content: center;
+	align-items: center;
+
+	border-radius: 10px;
+	background: var(--bg-game-secondary);
 }
 
-
+.hidden {
+    display: none;
+}
