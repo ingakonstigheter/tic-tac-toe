@@ -53,7 +53,7 @@ const gameboard = (function () {
 const gameController = (function () {
     let score = [0, 0];
     let players = ["", ""];
-    let layerIndex = 0;
+    let currentPlayerIndex = 0;
 
     function setPlayers(playerOne, playerTwo) {
         players[0] = playerOne;
@@ -75,25 +75,22 @@ const gameController = (function () {
     }
 
     function playRound(row, column) {
-        gameboard.placeMarker(players[playerIndex].marker, row, column);
-        let gameOver = false;
+        gameboard.placeMarker(players[currentPlayerIndex].marker, row, column);
 
         if (hasWinner() === true) {
             gameboard.clearBoard();
             score[currentPlayerIndex]++;
-            gameOver = true
-            return gameOver;
+            return true;
         } else if (gameboard.isFullBoard()) {
             gameboard.clearBoard();
-            gameOver = true
-            return gameOver;
+            return true;
         } else {
             if (currentPlayerIndex === 0) {
                 currentPlayerIndex = 1;
             } else {
                 currentPlayerIndex = 0;
             }
-            return gameOver
+            return false;
         }
     }
 
@@ -149,7 +146,7 @@ const gameController = (function () {
 const displayController = (function () {
     let cells = document.querySelectorAll(".cell");
     let btnNewGame = document.querySelector(".new-game");
-    let btnSave = document.querySelector(".new-players__save");
+    let btnStartGame = document.querySelector(".new-players__start");
     let btnRestart = document.querySelector(".game__restart");
     let newPlayerForm = document.querySelector(".new-players");
     let newPlayers = document.querySelectorAll(".new-players__input");
@@ -162,7 +159,7 @@ const displayController = (function () {
         btnNewGame.classList.toggle("hidden");
     });
 
-    btnSave.addEventListener("click", () => {
+    btnStartGame.addEventListener("click", () => {
         let namePlayerOne = newPlayers[0].value;
         let namePlayerTwo = newPlayers[1].value;
 
@@ -172,9 +169,9 @@ const displayController = (function () {
         if (namePlayerTwo === "") {
             namePlayerTwo = "Player Two";
         }
+        
         let playerOne = new Player(namePlayerOne, "X");
         let playerTwo = new Player(namePlayerTwo, "O");
-
         gameController.setPlayers(playerOne, playerTwo);
 
         newPlayerForm.classList.toggle("hidden");
